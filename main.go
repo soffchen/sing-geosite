@@ -166,7 +166,9 @@ func release(source string, destination string, output string) error {
 	if err != nil {
 		return err
 	}
-	setActionOutput("tag", *sourceRelease.Name)
+	// Remove "Released on" from Loyalsoldier/v2ray-rules-dat
+	tagName := *sourceRelease.Name
+	setActionOutput("tag", tagName[12:])
 	return nil
 }
 
