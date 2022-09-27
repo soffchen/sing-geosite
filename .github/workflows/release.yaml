@@ -23,7 +23,6 @@ jobs:
       - name: Build geosite
         id: build
         env:
-          NO_SKIP: true
           GOPRIVATE: github.com/sagernet
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
