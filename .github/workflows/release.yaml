@@ -32,6 +32,7 @@ jobs:
         if: steps.build.outputs.skip != 'true'
         run: |
           mkdir dist
+          cp geosite.db dist/
           sha256sum geosite.db > dist/geosite.db.sha256sum
       - name: Push artifacts to release branch
         if: steps.build.outputs.skip != 'true'
