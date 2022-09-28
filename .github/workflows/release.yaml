@@ -31,7 +31,8 @@ jobs:
       - name: Generate sha256 hash
         if: steps.build.outputs.skip != 'true'
         run: |
-          sha256sum geosite.db > geosite.db.sha256sum
+          mkdir dist
+          sha256sum geosite.db > dist/geosite.db.sha256sum
       - name: Push artifacts to release branch
         if: steps.build.outputs.skip != 'true'
         run: |
@@ -42,6 +43,7 @@ jobs:
           git checkout --orphan release-orphan
           git rm -rf .
           
+          cp dist/* .
           git add geosite.db
           git add geosite.db.sha256sum
           
